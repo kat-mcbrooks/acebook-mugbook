@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4'
   gem 'rubocop', require: false
   gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
 end
 
 group :development do
