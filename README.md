@@ -1,7 +1,7 @@
 # AceBook
 
 #### Diagram - Rails: client - server - models - views - database
-![bookmark_manager_diagram](/images/rails-client-server-diagram.png)
+![bookmark_manager_diagram](/app/assets/images/rails-client-server-diagram.png)
 
 REQUIRED INSTRUCTIONS:
 
