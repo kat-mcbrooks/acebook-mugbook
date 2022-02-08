@@ -1,0 +1,15 @@
+<h1>Welcome to mugbook!</h1>
+<h2>Please sign in</h2>
+
+<%= form_for @user do |form| %>
+  <%= form.label :username %><br>
+  <%= form.text_field :username %><br>
+  <br>
+  <%= form.label :email %><br>
+  <%= form.text_field :email %><br>
+  <br>
+  <%= form.label :password %><br>
+  <%= form.text_field :password %><br>
+  <br>
+  <%= form.submit "Submit" %>
+<% end %>
