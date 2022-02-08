@@ -1,5 +1,8 @@
 # AceBook
 
+#### Diagram - Rails: client - server - models - views - database
+![bookmark_manager_diagram](/images/rails-client-server-diagram.png)
+
 REQUIRED INSTRUCTIONS:
 
 1. Fork this repository to `acebook-teamname` and customize
