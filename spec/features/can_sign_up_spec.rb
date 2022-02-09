@@ -4,19 +4,19 @@ RSpec.feature 'user sign up', type: :feature do
   scenario 'Can sign-up' do
     visit '/users/new'
 
-    fill_in 'user[email]', with: 'test@email'
+    fill_in 'user[email]', with: 'test@email.com'
     fill_in 'user[username]', with: 'testusername'
     fill_in 'user[name]', with: 'firstname surname'
     fill_in 'user[password]', with: 'myfavmug123'
     click_button 'Sign up'
-    expect(page).to have_content('Welcome to mugbook, testusername-mug!')
     expect(page).to have_current_path('/posts/index')
+    expect(page).to have_content('Welcome to mugbook, testusername-mug!')
   end
 
   scenario 'receives error message if email is not unique' do 
     visit '/users/new'
 
-    fill_in 'user[email]', with: 'test@email'
+    fill_in 'user[email]', with: 'test@email.com'
     fill_in 'user[username]', with: 'testusername'
     fill_in 'user[name]', with: 'firstname surname'
     fill_in 'user[password]', with: 'myfavmug123'
@@ -24,7 +24,7 @@ RSpec.feature 'user sign up', type: :feature do
 
     visit '/users/new'
 
-    fill_in 'user[email]', with: 'test@email'
+    fill_in 'user[email]', with: 'test@email.com'
     fill_in 'user[username]', with: 'testusername'
     fill_in 'user[name]', with: 'firstname surname'
     fill_in 'user[password]', with: 'myfavmug123'
