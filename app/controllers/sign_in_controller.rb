@@ -3,7 +3,9 @@ class SignInController < ApplicationController
     @user = 'blank user class'
   end
 
-  
+  def welcome
+    @user = (params[:username])
+  end
 
   
 end

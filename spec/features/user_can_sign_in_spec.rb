@@ -7,6 +7,6 @@ RSpec.feature "sign-in", type: :feature do
     fill_in "email", with: "pingu@igloo.com"
     fill_in "password", with: "meep moop"
     click_button "Submit"
-    expect(page).to have_content("Hello Pingu")
+    expect(page).to have_content("Pingu")
   end
 end
