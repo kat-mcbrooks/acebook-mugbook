@@ -1,33 +1,30 @@
 class UsersController < ApplicationController
   def index
+    @users = User.all
   end
 
   def new
-    @user = User.new(params[:name])
+    @user = User.new
   end
 
   def create
-    @user = User.save
+    @user = User.create(user_params)
+    
+    if @user.save
+      p 'success!'
+      redirect_to user_url(@user)
+    else 
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    # @user = User.find(params[:id])
+  end
+
+  private
+  
+  def user_params
+    params.require(:user).permit(:username, :email, :name, :password)
   end
 end
-
-#   def new
-#     @user = User.new
-#   end
-
-#   def create
-#     @user = User.new(username: "...", email: "...", password: "...")
-
-#     if @user.save
-#       redirect_to /posts/index
-#     else
-#       render :new, status: :unprocessable_entity
-#     end
-#   end
-
-#   private
-#   def user_params
-#     params.require(:user).permit(:username, :email, :full_name, :password)
-#   end
-# end
-
