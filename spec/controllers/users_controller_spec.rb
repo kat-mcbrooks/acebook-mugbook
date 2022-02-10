@@ -18,11 +18,23 @@ RSpec.describe UsersController, type: :controller do
       post :create, params: { user: { name: 'name', username: 'username', email: 'email@test.com', password: 'password' } }
       expect(User.find_by(email: 'email@test.com')).to be
     end
+  end
 
+  describe 'DELETE /' do
     it 'deletes a user' do
       delete :create, params: { user: { name: 'name', username: 'username', email: 'email@test.com', password: 'password' } }
       
-      expect(User.find_by(id: @user)).to_not be
+      expect(User.find_by(id: @user)).not_to be
+    end
+  end
+
+  describe 'PUT /' do
+    it 'updates a user' do
+      user = User.create({ name: 'name', username: 'username', email: 'email@test.com', password: 'password' })
+      user.update(name: "different_name")
+
+      expect(User.find_by_name("different_name")).to eq(user)
+      expect(response).to have_http_status(200)
     end
   end
 
