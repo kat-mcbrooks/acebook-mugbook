@@ -38,7 +38,7 @@ jobs:
         uses: ruby/setup-ruby@v1 #apparently this is faster than actions/ruby 
         with:
           bundler-cache: true  # runs 'bundle install' and caches installed gems automatically (which speeds up installing gems significantly)
-      - run: bundle exec rake
+      # - run: bundle exec rake this line is in ruby/setup-ruby actions documentation but it seems to pass without it
       - name: Setup node
         uses: actions/setup-node@v2
         with:
