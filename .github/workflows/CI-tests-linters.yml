@@ -38,10 +38,6 @@ jobs:
         uses: ruby/setup-ruby@v1 #apparently this is faster than actions/ruby 
         with:
           bundler-cache: true  # runs 'bundle install' and caches installed gems automatically (which speeds up installing gems significantly)
-      - name: Install dependencies- yarn #is this needed or is it done in the bundler-cache true?
-        uses: borales/actions/yarn@v2
-        with: 
-          cmd: install
       - name: Setup node
         uses: actions/setup-node@v2
         with:
