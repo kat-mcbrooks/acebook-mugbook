@@ -3,25 +3,36 @@
     padding: 20px;
     border-radius: 10px;
     background-color: #aaadb5;
-    display: flex;
-    flex-direction: column;
+    
+    
 
 
 }
+
+.form-input {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
 .label {
+    justify-content: center;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
     color: #1b50cc;
     margin-top: 10px;
-    text-align: center;
+   
+    
     
 }
 
 .text_area{
+  
    
     width: 400px;
-    margin-left: 140px;
     margin-top: 10px;
     border: 2px solid #000;
     border-radius: 10px;
@@ -31,7 +42,7 @@
     padding: 10px;
     font-size: 20px;
     overflow: hidden;
-    /* font-style:"-webkit-text-security: circle"; */
+   
 }
 
 .text-area-password {
@@ -40,7 +51,6 @@
 
 .sign_up_button {
     width: 400px;
-    margin-left: 140px;
     margin-top: 30px;
     height: 45px;
     border-radius: 10px;
@@ -53,4 +63,5 @@
 .sign_up_button:hover {
     background-color:#1b50cc;
     color: #aaadb5;
+    cursor: pointer;
 }
