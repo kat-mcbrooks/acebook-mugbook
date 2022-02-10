@@ -20,9 +20,8 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it 'deletes a user' do
-      post :create, params: { user: { name: 'name', username: 'username', email: 'email@test.com', password: 'password' } }
-      delete :destroy(@user[:id])
-      expect(User.find_by(id: @user)).to not_be
+      delete :create, params: { user: { name: 'name', username: 'username', email: 'email@test.com', password: 'password' } }
+      expect(User.find_by(id: @user)).to_not be
     end
   end
 
