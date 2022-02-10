@@ -1,0 +1,70 @@
+# This workflow uses actions that are not certified by GitHub.  They are
+# provided by a third-party and are governed by separate terms of service,
+# privacy policy, and support documentation.
+#
+# This workflow will install a prebuilt Ruby version, install dependencies, and
+# run tests and linters.
+name: "Ruby Rails MugBook CI - run tests and linters"
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  test: #name of job (this is arbritrary. Could add more, but we just have test and lint jobs currently)
+    runs-on: ${{matrix.os}} #
+    strategy:
+      matrix: 
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+#     services:
+#       postgres:
+#         image: postgres:11-alpine
+#         ports:
+#           - "5432:5432"
+#         env: # Environment variables you want to use inside the service
+#           POSTGRES_DB: rails_test
+#           POSTGRES_USER: rails
+#           POSTGRES_PASSWORD: password
+      #do we need to put activerecord here as a service?
+      #or redis? lots seem to have redis here (caching tools like Sidekiq)
+#     env:
+#       RAILS_ENV: test
+#       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+    steps:
+      - name: Checkout code (always the first step)
+        uses: actions/checkout@v2 #actions path in github is where predefined actions are hosted. Find them here github.com/actions
+      # Add or replace dependency steps here
+      - name: Install Ruby and gems 
+        uses: ruby/setup-ruby@v1 #apparently this is faster than actions/ruby 
+        with:
+          bundler-cache: true  # runs 'bundle install' and caches installed gems automatically (which speeds up installing gems significantly)
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - run: yarn install
+      - run: yarn test
+      # Add or replace database setup steps here
+      - name: Set up database using schema.rb file
+        run: bin/rails db:schema:load
+      # Add or replace test runners here
+      - name: Run tests
+        run: bin/rake
+        
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1 
+        with:
+          bundler-cache: true
+      # Add or replace any other lints here
+      - name: Run security audit dependencies
+        run: bin/bundler-audit --update
+      - name: Run security checks #previously had: Security audit application code
+        run: bin/brakeman -q -w2
+      - name: Run linters (Lint Ruby files)
+        run: bin/rubocop --parallel
