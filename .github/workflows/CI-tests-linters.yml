@@ -12,10 +12,11 @@ on:
     branches: [ master, heroku ]
 jobs:
   test: #name of job (this is arbritrary. Could add more, but we just have test and lint jobs currently)
-    runs-on: ${{matrix.os}} #
-    strategy:
-      matrix: 
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+    runs-on: ubuntu-latest 
+    # runs-on: ${{matrix.os}} #
+    # strategy:
+    #   matrix: 
+    #     os: [ubuntu-latest, windows-latest, macOS-latest]
     services:
       postgres:
         image: postgres:11-alpine
@@ -63,9 +64,9 @@ jobs:
         with:
           bundler-cache: true
       # Add or replace any other lints here
-      - name: Run security audit dependencies
-        run: bin/bundler-audit --update
-      - name: Run security checks #previously had: Security audit application code
-        run: bin/brakeman -q -w2
-      - name: Run linters (Lint Ruby files)
-        run: bin/rubocop --parallel
+      # - name: Run security audit dependencies
+      #   run: bin/bundler-audit --update
+      # - name: Run security checks #previously had: Security audit application code
+      #   run: bin/brakeman -q -w2
+      # - name: Run linters (Lint Ruby files)
+      #   run: bin/rubocop --parallel
