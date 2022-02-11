@@ -3,7 +3,3 @@
   "private": true,
   "dependencies": {}
 }
-
-"scripts": {
-"start:" "node index.js"
-} #Potential fix for error code h10 heroku
