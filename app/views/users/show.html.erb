@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<% if Current.user %>
+  Logged in as: <%= Current.user.email %><br>
+  <= link_to 'Edit Password', edit_password_path %>
+  <%= button_to 'Logout', logout_path, method: :delete %>
+  <% else %>
+  <%= link_to 'Sign Up', new_user_path %>
+  or
+  <%= link_to 'Login', sign_in_path %>
+<% end %>
+
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
@@ -17,7 +27,7 @@
 
 <p>
   <strong>Password:</strong>
-  <%= @user.password %>
+  <%= @user.password_digest %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

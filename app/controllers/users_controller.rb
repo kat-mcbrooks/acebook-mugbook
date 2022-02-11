@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       puts 'respond block'
       if @user.update(user_params)
         puts 'success'
+        session[:user_id] = @user.id
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -71,6 +72,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :username, :email, :password)
+      params.require(:user).permit(:name, :username, :email, :password_digest, :password_confirmation)
     end
 end

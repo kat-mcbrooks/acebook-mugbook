@@ -7,9 +7,9 @@ RSpec.feature 'user sign up', type: :feature do
     fill_in 'user[email]', with: 'test@email.com'
     fill_in 'user[username]', with: 'testusername'
     fill_in 'user[name]', with: 'firstname surname'
-    fill_in 'user[password]', with: 'myfavmug123'
+    fill_in 'user[password_digest]', with: 'myfavmug123'
     click_button 'Sign up'
-    expect(page).to have_current_path('/posts/index')
+    expect(page).to have_current_path('/posts')
     expect(page).to have_content('Welcome to mugbook, testusername-mug!')
   end
 
@@ -19,7 +19,7 @@ RSpec.feature 'user sign up', type: :feature do
     fill_in 'user[email]', with: 'test@email.com'
     fill_in 'user[username]', with: 'testusername'
     fill_in 'user[name]', with: 'firstname surname'
-    fill_in 'user[password]', with: 'myfavmug123'
+    fill_in 'user[password_digest]', with: 'myfavmug123'
     click_button 'Sign up'
 
     visit '/users/new'
@@ -27,7 +27,7 @@ RSpec.feature 'user sign up', type: :feature do
     fill_in 'user[email]', with: 'test@email.com'
     fill_in 'user[username]', with: 'testusername'
     fill_in 'user[name]', with: 'firstname surname'
-    fill_in 'user[password]', with: 'myfavmug123'
+    fill_in 'user[password_digest]', with: 'myfavmug123'
     click_button 'Sign up'
     
     expect(page).to have_content('That\'s not an email!')

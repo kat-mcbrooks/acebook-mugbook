@@ -11,13 +11,13 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'POST /' do
     it 'responds with 200' do
-      post :create, params: { user: { name: 'name', username: 'username', email: 'email@test.com', password: 'password' } }
+      post :create, params: { user: { name: 'name', username: 'username', email: 'email@test.com', password_digest: 'password' } }
       
       expect(response).to redirect_to(posts_url)
     end
 
     it 'creates a user' do
-      post :create, params: { user: { name: 'name', username: 'username', email: 'email@test.com', password: 'password' } }
+      post :create, params: { user: { name: 'name', username: 'username', email: 'email@test.com', password_digest: 'password' } }
       
       expect(User.find_by(email: 'email@test.com')).to be
     end
@@ -25,7 +25,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'DELETE /' do
     it 'deletes a user', :delete => true do
-      user = User.create({ name: 'name', username: 'username', email: 'email@test.com', password: 'password' })
+      user = User.create({ name: 'name', username: 'username', email: 'email@test.com', password_digest: 'password' })
       
       expect(User.find_by(id: user.id)).to be
       delete :destroy, params: { id: user.id }
@@ -36,7 +36,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'PUT /' do
     it 'updates a user', :put => true do
-      user = User.create({ name: 'name', username: 'username', email: 'email@test.com', password: 'password' })
+      user = User.create({ name: 'name', username: 'username', email: 'email@test.com', password_digest: 'password' })
       
       expect(User.find(user.id).name).to eq "name"
       put :update, params: { id: user.id, :user => {:name => 'different name'} }
@@ -47,12 +47,12 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it 'updates a user' do
-      user = User.create({ name: 'name', username: 'username', email: 'email@test.com', password: 'password' })
+      user = User.create({ name: 'name', username: 'username', email: 'email@test.com', password_digest: 'password' })
       
-      expect(User.find(user.id).password).to eq "password"
-      put :update, params: { id: user.id, :user => {:password => 'pw'} }
+      expect(User.find(user.id).password_digest).to eq "password"
+      put :update, params: { id: user.id, :user => {:password_digest => 'pw'} }
       
-      expect(User.find(user.id).password).to eq "password"
+      expect(User.find(user.id).password_digest).to eq "password"
     end
   end
 

@@ -6,7 +6,7 @@ RSpec.describe "users/edit", type: :view do
       name: "MyText",
       username: "MyText",
       email: "MyText@gmail.com",
-      password: "MyText1"
+      password_digest: "MyText1"
     ))
   end
 
@@ -21,7 +21,7 @@ RSpec.describe "users/edit", type: :view do
 
       assert_select "textarea[name=?]", "user[email]"
 
-      assert_select "input[name=?]", "user[password]"
+      assert_select "input[name=?]", "user[password_digest]"
     end
   end
 end
