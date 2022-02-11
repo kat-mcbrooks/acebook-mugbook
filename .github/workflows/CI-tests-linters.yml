@@ -7,9 +7,9 @@
 name: "Ruby Rails MugBook CI - run tests and linters"
 on:
   push:
-    branches: [ master ]
+    branches: [ master, heroku ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, heroku ]
 jobs:
   test: #name of job (this is arbritrary. Could add more, but we just have test and lint jobs currently)
     runs-on: ${{matrix.os}} #
