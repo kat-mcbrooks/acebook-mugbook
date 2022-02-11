@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :posts
+
   validates :username, presence: true, length: {maximum: 20}
   validates :name, presence: true, length: {maximum: 20}
   validates :email, :email_format => { :message => 'That\'s not an email!' },
