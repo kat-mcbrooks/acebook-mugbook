@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to post_path
+    redirect_to posts_path
   end
 
   def index

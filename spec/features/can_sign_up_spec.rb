@@ -9,7 +9,7 @@ RSpec.feature 'user sign up', type: :feature do
     fill_in 'user[name]', with: 'firstname surname'
     fill_in 'user[password]', with: 'myfavmug123'
     click_button 'Sign up'
-    expect(page).to have_current_path('/posts/index')
+    expect(page).to have_current_path('/posts')
     expect(page).to have_content('Welcome to mugbook, testusername-mug!')
   end
 
@@ -30,8 +30,8 @@ RSpec.feature 'user sign up', type: :feature do
     fill_in 'user[password]', with: 'myfavmug123'
     click_button 'Sign up'
     
-    expect(page).to have_content('That\'s not an email!')
-    expect(page).to have_current_path('users/new')
+    expect(page).to have_content('Email has already been taken')
+    expect(page).to have_current_path('/users')
   end
 
   scenario 'received error message if pw doesnt meet requirements' do 
