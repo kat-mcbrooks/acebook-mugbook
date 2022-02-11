@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "sign-up-form.css" %>
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
     <div style="color: red">
@@ -10,28 +11,29 @@
       </ul>
     </div>
   <% end %>
+  <div class='container'>
+    <div class='form-input'>
+      <%= form.label :name , :class => "label" %>
+      <%= form.text_area :name, :class => 'text_area'  %>
+    </div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_area :name %>
-  </div>
+    <div class='form-input'>
+      <%= form.label :username, :class => "label" %>
+      <%= form.text_area :username, :class => 'text_area' %>
+    </div>
 
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_area :username %>
-  </div>
+    <div class='form-input'>
+      <%= form.label :password, :class => "label" %>
+      <%= form.password_field :password, :class => 'text_area text-area-password' %>
+    </div>
 
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.text_area :password %>
-  </div>
+    <div class='form-input'>
+      <%= form.label :email, :class => "label" %>
+      <%= form.text_area :email, :class => 'text_area' %>
+    </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_area :email %>
-  </div>
-
-  <div>
-    <%= form.submit 'Sign up' %>
+    <div class='form-input form-button'>
+      <%= form.submit 'Sign up', :class => 'sign_up_button' %>
+    </div>
   </div>
 <% end %>

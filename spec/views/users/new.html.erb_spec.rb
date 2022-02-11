@@ -21,7 +21,7 @@ RSpec.describe "users/new", type: :view do
 
       assert_select "textarea[name=?]", "user[email]"
 
-      assert_select "textarea[name=?]", "user[password]"
+      assert_select "input[name=?]", "user[password]"
     end
   end
 end
