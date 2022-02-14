@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         flash[:success] = "Your post has been created!"
-        format.html { redirect_to posts_path}
+        format.html { redirect_to posts_path }
         format.json { render :show, status: :created, location: @post }
       else
         flash.now[:alert] = "Something went wrong! Please try again"

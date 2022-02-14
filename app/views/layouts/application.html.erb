@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <% if session[:user_id] %>
-      Logged in as <%= session[:username] %>
+      Logged in as <%= "#{session[:username]}" %>
       <%= link_to "Log out", logout_path %>
     <% else %>
       <%= link_to "Sign up", signup_path %> or

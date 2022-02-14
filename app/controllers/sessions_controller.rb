@@ -9,8 +9,6 @@ class SessionsController < ApplicationController
       flash.now[:success] = "Welcome back, #{@user.username}!!"
       session[:user_id] = @user.id
       session[:username] = @user.username
-      p "user id is #{@user.id}"
-      p "session id is #{session[:user_id]}"
       redirect_to posts_path
     else
       flash.now[:alert] = "Something went wrong! Please check your password and email are correct"
