@@ -68,5 +68,5 @@ jobs:
       #   run: bin/bundler-audit --update
       # - name: Run security checks #previously had: Security audit application code
       #   run: bin/brakeman -q -w2
-      # - name: Run linters (Lint Ruby files)
-      #   run: bin/rubocop --parallel
+      - name: Run linters (Lint Ruby files)
+        run: bin/rubocop --parallel
