@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to posts_url, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
@@ -71,6 +72,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :username, :email, :password)
+      params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
     end
 end
