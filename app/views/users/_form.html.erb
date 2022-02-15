@@ -1,5 +1,6 @@
 <%# <%= stylesheet_link_tag "sign-up-form.css" %>
 <%= form_with(model: user) do |form| %>
+<!-- do we need instead of above for_with model: @user, url: sign)up_path in line above? -->
   <% if user.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -25,6 +26,11 @@
     <div class='form-input'>
       <%= form.label :password, :class => "label" %>
       <%= form.password_field :password, :class => 'text_area text-area-password' %>
+    </div>
+
+    <div class='form-input'>
+      <%= form.label :password_confirmation, :class => "label" %>
+      <%= form.password_field :password_confirmation, :class => 'text_area text-area-password' %>
     </div>
 
     <div class='form-input'>
