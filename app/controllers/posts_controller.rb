@@ -17,13 +17,11 @@ class PostsController < ApplicationController
     @post = Post.create!(post_params)
 
     respond_to do |format|
-      p "user id from post create #{session[:user_id]}"
       if @post.save
         flash[:success] = "Your post has been created!"
         format.html { redirect_to posts_path }
         format.json { render :show, status: :created, location: @post }
       else
-        p "post didn't work but user id is #{session[:user_id]}"
         flash.now[:alert] = "Something went wrong! Please try again"
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
