@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   #root "posts#index"
   root 'home#index'
   resources :users, only: [:show, :edit, :update]
-  put '/post/:id/like', to: 'posts#like', as: 'like'
+
+  put '/posts/:id/likes', to: 'posts#like', as: 'like'
+  delete 'posts/:id/likes', to: 'likes#destroy', as: 'unlikes'
 end

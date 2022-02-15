@@ -6,9 +6,12 @@
   <p><%= post.message %></p>
   <% if user_signed_in? %>
     <% if post.liked?(current_user) %>
-      <%= button_to "Awesome!!", post_like_path(post), method: :post, disabled: true %>
+      <%= button_to "Mug!!", post_likes_path(post), method: :post, disabled: true %>
+      <%= button_to "Unmug :(", post_likes_path(post), method: :delete %>
     <% else %>
-      <%= button_to "Awesome!!", post_like_path(post), method: :post %>
+      <%= button_to "Mug!!", post_likes_path(post), method: :post %>
+      <%= button_to "Unmug", post_likes_path(post), method: :delete, disabled: :true %>
     <% end %>
   <% end %>
+  <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'mugs' : 'mug' %>
 <% end %>
