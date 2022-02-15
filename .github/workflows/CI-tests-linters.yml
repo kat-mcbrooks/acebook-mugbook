@@ -68,5 +68,9 @@ jobs:
       #   run: bin/bundler-audit --update
       # - name: Run security checks #previously had: Security audit application code
       #   run: bin/brakeman -q -w2
-      - name: Run linters (Lint Ruby files)
-        run: rubocop --parallel
+      - name: Lint Code Base
+        uses: github/super-linter/slim@v4
+          env:
+          VALIDATE_ALL_CODEBASE: false
+        DEFAULT_BRANCH: master
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
