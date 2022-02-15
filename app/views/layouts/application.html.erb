@@ -26,10 +26,12 @@
           <a><i class="fa fa-compass"></i></a>
           <a><i class="fa fa-heart"></i></a>
           <% if user_signed_in? %>
+          Logged in
           <a href="<%= destroy_user_session_path%>" data-method="delete">
             <i class="fa fa-user"></i>
           </a>
           <% else %>
+          Not logged in
           <a href="<%= new_user_session_path%>">
             <i class="fa fa-sign-in"></i>
           </a>

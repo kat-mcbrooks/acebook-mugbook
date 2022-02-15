@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+<<<<<<< HEAD
   before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json
@@ -75,4 +76,24 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
     end
+=======
+ def show
+    
+ end
+
+ def edit
+  @user = User.find(params[:id])
+ end
+
+ def update
+    current_user.update(user_params)
+    redirect_to current_user
+  end
+  private
+  def user_params
+    params.require(:user).permit(:username, :name, :website,
+                                 :bio, :email, :phone, :gender)
+  end
+
+>>>>>>> e2f6052bb3b1c991046f44fbcbe1eb2313eef9f8
 end
