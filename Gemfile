@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 gem 'devise'
 
+ruby "3.0.3"
+
 gem 'validates_email_format_of'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1'
