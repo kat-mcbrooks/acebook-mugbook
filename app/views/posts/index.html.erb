@@ -1,7 +1,14 @@
-<% @posts.each do |post| %>
-  <p><%= post.message %></p>
-<% end %>
-
 <%= link_to new_post_path do %>
   New post
+<% end %>
+
+<% @posts.each do |post| %>
+  <p><%= post.message %></p>
+  <% if user_signed_in? %>
+    <% if post.liked?(current_user) %>
+      <%= button_to "Awesome!!", post_like_path(post), method: :post, disabled: true %>
+    <% else %>
+      <%= button_to "Awesome!!", post_like_path(post), method: :post %>
+    <% end %>
+  <% end %>
 <% end %>
