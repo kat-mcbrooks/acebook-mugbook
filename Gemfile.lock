@@ -124,8 +124,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
-      racc (~> 1.4)
-    nokogiri (1.13.1-arm64-darwin)
+
+
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.21.0)
@@ -297,4 +297,6 @@ RUBY VERSION
    ruby 3.0.3p157
 
 BUNDLED WITH
+
    2.3.7
+

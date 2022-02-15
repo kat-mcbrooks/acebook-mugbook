@@ -1,23 +1,22 @@
 class SessionsController < ApplicationController
 
-  def create
-    @user = User.find_by(email: params[:email])
-    p "email = #{params[:email]}"
-
-    if !!@user && @user.authenticate(params[:password])
-      p 'authenticated'
-      flash.now[:success] = "Welcome back, #{@user.username}!!"
-      session[:user_id] = @user.id
-      session[:username] = @user.username
-      redirect_to posts_path
-    else
-      flash.now[:alert] = "Something went wrong! Please check your password and email are correct"
-      redirect_to login_path
+    def new; end
+    def create
+      user = User.find_by(email: params[:email])
+      # finds existing user, checks to see if user can be authenticated
+      if user.present? && user.authenticate(params[:password])
+      # sets up user.id sessions
+        session[:user_id] = user.id
+        redirect_to root_path, notice: 'Logged in successfully'
+      else
+        flash.now[:alert] = 'Invalid email or password'
+        render :new
+      end
     end
-  end
-
-  def destroy
-    redirect_to root_url, notice: "Bye, #{session[:username]}!!"
-    session[:user_id] = nil
-  end
+    def destroy
+      # deletes user session
+      session[:user_id] = nil
+      redirect_to root_path, notice: 'Logged Out'
+    end
 end
+
