@@ -6,6 +6,9 @@
   <div class='post-container'>
     <%= post.user.username %> says...
     <%= post.message %>
+    <% if current_user.id == post.user_id %>
+      <%= link_to 'edit post', edit_post_path(post), method: :put %>
+    <% end %>
     <% if user_signed_in? %>
       <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
       <% if pre_like %>

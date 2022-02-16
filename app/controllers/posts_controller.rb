@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, only: [:edit, :update]
+  # before_action :authorize, only: [:edit, :update]
 
   def index
     @posts = Post.all.order('created_at DESC')
