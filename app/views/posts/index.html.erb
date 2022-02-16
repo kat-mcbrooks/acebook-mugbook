@@ -4,15 +4,15 @@
 
 <% @posts.each do |post| %>
   <div class='post-container'>
-      <%= post.message %>
-      <% if user_signed_in? %>
-        <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-        <% if pre_like %>
-          <%= button_to 'Unmug!', post_like_path(post, pre_like), method: :delete %>
-        <% else %>
-          <%= button_to 'Mug!', post_likes_path(post), method: :post %>
-        <% end %>
+    <%= post.message %>
+    <% if user_signed_in? %>
+      <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+      <% if pre_like %>
+        <%= button_to 'Unmug!', post_like_path(post, pre_like), method: :delete %>
+      <% else %>
+        <%= button_to 'Mug!', post_likes_path(post), method: :post %>
       <% end %>
-      <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'mug!' : 'mugs!' %>
-    </div>
+    <% end %>
+    <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'mug!' : 'mugs!' %>
+  </div>
 <% end %>
