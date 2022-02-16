@@ -47,12 +47,12 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  def like
-    @post = Post.all.find(params[:id])
-    Like.create(user_id: current_user.id, post_id: @post.id)
-    redirect_to post_path(@post)
-    # redirect_to posts_path instead?
-  end
+  # def like
+  #   @post = Post.all.find(params[:id])
+  #   Like.create(user_id: current_user.id, post_id: @post.id)
+  #   redirect_to post_path(@post)
+  #   # redirect_to posts_path instead?
+  # end
 
   def get_user
     post = Post.find_by(id: params[:id])
