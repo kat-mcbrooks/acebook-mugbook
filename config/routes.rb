@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   devise_scope :user do  
     get '/users/sign_out' => 'devise/sessions#destroy'     
   end
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
 
   #root "posts#index"
-  root 'home#index'
+  root 'posts#index'
   resources :users, only: [:show, :edit, :update]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ 
+  # put '/posts/:id/likes', to: 'posts#like', as: 'like'
+  # delete 'posts/:id/likes', to: 'likes#destroy', as: 'unlikes'
 end
