@@ -3,7 +3,33 @@
 @import 'users';
 
 .container{
+  text-align: center;
   max-width: 1000px;
+}
+.post-container {
+  border: 1px solid rgb(224, 223, 223);
+}
+.message-container {
+  text-align: center;
+  max-width: 50%;
+  background-color: rgb(232, 247, 245);
+}
+.mug-button {
+  background: url('/images/tiny-mug.png');
+  background-size: cover;
+  width: 300px;
+  height: 200px;
+}
+.unmug_button{
+  background: url('/images/unmug.png');
+}
+.like-count {
+
+}
+.button_green {
+  color: green;
+  background-repeat:no-repeat;
+  padding-left:30px;
 }
 .navbar{
   border-bottom: 1px solid rgba(0,0,0,.0975);
