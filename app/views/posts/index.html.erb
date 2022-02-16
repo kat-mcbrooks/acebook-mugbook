@@ -6,7 +6,7 @@
   <div class='post-container'>
     <%= post.user.username %> says...
     <%= post.message %>
-    <% if current_user.id == post.user_id %>
+    <% if current_user.id == post.user_id && post.editable? %>
       <%= link_to 'edit post', edit_post_path(post), method: :put %>
     <% end %>
     <% if user_signed_in? %>

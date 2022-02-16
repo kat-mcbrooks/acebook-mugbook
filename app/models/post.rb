@@ -5,4 +5,9 @@ class Post < ApplicationRecord
   def liked?(id)
     !!likes.find { |like| like.user_id == id }
   end
+
+  def editable?
+    p Time.now.to_i
+    Time.now.to_i < created_at.since(600).to_i
+  end
 end
