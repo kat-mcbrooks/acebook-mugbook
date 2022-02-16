@@ -9,6 +9,9 @@
     <% if current_user.id == post.user_id && post.editable? %>
       <%= link_to 'edit post', edit_post_path(post), method: :put %>
     <% end %>
+    <% if current_user.id == post.user_id %>
+      <%= button_to 'delete post forever!', post_path(post), confirm: "Are you sure?", method: :delete %>
+    <% end %>
     <% if user_signed_in? %>
       <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
       <% if pre_like %>
