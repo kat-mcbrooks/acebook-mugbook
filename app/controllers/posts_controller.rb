@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, only: [:edit, :update]
+  # before_action :authorize, only: [:edit, :update]
 
   def index
     @posts = Post.all.order('created_at DESC')
@@ -43,7 +43,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    p 'inside the destroy method'
+    @post = Post.find(params[:id])
+    p '@post found'
     @post.destroy
+    p 'post destroyed'
     redirect_to posts_path
   end
 
