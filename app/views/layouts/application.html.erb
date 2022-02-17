@@ -16,9 +16,9 @@
       <div class="container">
         <div class="logo">
           <a class="navbar-brand" href="<%= posts_path %>">
-            <i class="fa fa-coffee" aria-hidden="true"></i>
+            <h2><i class="fa fa-coffee" aria-hidden="true"></i>
             Mugbook
-          
+            </h2>
           </a>
         </div>
         
@@ -34,7 +34,7 @@
           </form>
         </div>
 
-
+          <h3>
           <% if user_signed_in? %>
            Hi, <%= current_user.username %>!!
 
@@ -52,6 +52,7 @@
             <i class="fa fa-sign-in"></i>
           </a>
           <% end %>
+          </h3>
         </div>
       </div>
     </nav>
