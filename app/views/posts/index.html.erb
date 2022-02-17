@@ -1,14 +1,17 @@
 <br>
 <br>
+<!---
 <h3>
 <%= link_to new_post_path do %>
   New post
 <% end %>
 </h3>
+--->
 <%= render "form", post: @post %>
 
+
 <% @posts.each do |post| %>
-  <div class='post-container'>
+  <div class='post-container' >
     <%= post.user.username %> said...
     <%= simple_format(post.message) %><br>
     <% if post.image.attached? %>
@@ -19,9 +22,11 @@
       <%= link_to 'edit post', edit_post_path(post), method: :put %>
     <% end %>
     <% if current_user.id == post.user_id %>
+    <br>
       <%= button_to 'delete post forever!', post_path(post), confirm: "Are you sure?", method: :delete %>
     <% end %>
     <% if user_signed_in? %>
+    <br>
       <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
       <% if pre_like %>
         <%= button_to 'Unmug!', post_like_path(post, pre_like), method: :delete %>
@@ -29,6 +34,7 @@
         <%= button_to 'Mug!', post_likes_path(post), method: :post %>
       <% end %>
     <% end %>
+    <br>
     <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'mug!' : 'mugs!' %>
   </div>
 <% end %>
