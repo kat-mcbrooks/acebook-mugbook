@@ -8,19 +8,15 @@
     
     <div class="col-md-8 basic-info">
       <div class="user-wrapper">
-        <h2 class="username">MugBook</h2>
+        <h2 class="username"><%= current_user.username %></h2>
         <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
           <button>Edit Profile</button>
         </a>
       </div>
       <ul class="posts">
-        <li><span>53</span> posts</li>
-        <li><span>100</span> followers</li>
-        <li><span>100</span> following</li>
+        <li><span><%= current_user.posts.count %></span> posts</li>
+        <li><span><%= current_user.likes.count %></span> <%= (current_user.likes.count) == 1 ? 'mug!' : 'mugs!' %></li>
       </ul>
-
-      <h2 class="name">MUGBOOK</h2>
-      <a class="website">mugbook.com</a>
     </div>
   </div>
 </div>
@@ -28,9 +24,26 @@
 <div class="user-tabs">
 <a class="tab active" href="">
   <i class="fa fa-th"></i>
-  POSTS
+  Your posts!
 </a>
-<a class="tab" href="">
+</div>
+<% current_user.posts.each do |post| %>
+  <div class='post-container'> 
+    <%= simple_format(post.message) %><br>
+    at <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
+    <%= link_to 'edit post', edit_post_path(post), method: :put %>
+    <%= button_to 'delete post forever!', post_path(post), confirm: "Are you sure?", method: :delete %>
+    <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+    <% if pre_like %>
+      <%= button_to 'Unmug your own post?!', post_like_path(post, pre_like), method: :delete %>
+    <% else %>
+      <%= button_to 'Mug your own post?!', post_likes_path(post), method: :post %>
+    <% end %>
+    <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'mug!' : 'mugs!' %>
+  </div>
+<% end %>
+
+<%# <a class="tab" href="">
   <i class="fa fa-tv"></i>
   IGTV
 </a>
@@ -41,6 +54,5 @@
 <a class="tab" href="">
   <i class="fa fa-tag"></i>
   TAGGED
-</a>
-</div>
+</a> %>
 
