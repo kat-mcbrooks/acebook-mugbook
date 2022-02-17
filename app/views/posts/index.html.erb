@@ -1,6 +1,4 @@
-<%= link_to new_post_path do %>
-  New post
-<% end %>
+<%= render "form", post: @post %>
 
 <% @posts.each do |post| %>
   <div class='post-container'>
