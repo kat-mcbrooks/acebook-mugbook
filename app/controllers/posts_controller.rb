@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   # before_action :authorize, only: [:edit, :update]
 
   def index
+    @post = Post.new
     @posts = Post.all.order('created_at DESC')
   end
 
