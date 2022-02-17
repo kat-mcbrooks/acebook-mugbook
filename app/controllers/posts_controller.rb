@@ -4,7 +4,8 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all.with_attached_images.order('created_at DESC')
+    @posts = Post.all.order('created_at DESC')
+    # @posts = Post.all.with_attached_images.order('created_at DESC')
     # @posts.map {|post| post.images.attach(params[:images])}
   end
 
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create!(post_params)
-    @post.images.attach(params[:post][:images])
+    # @post.images.attach(params[:post][:images])
    #if you change to one image upload only, the above line isn't needed
 
     respond_to do |format|
@@ -74,7 +75,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:message, :user_id, images: [])
-    # params.require(:post).permit(:message, :user_id, :image)
+    # params.require(:post).permit(:message, :user_id, images: [])
+    params.require(:post).permit(:message, :user_id, :image)
   end
 end

@@ -32,14 +32,9 @@
 <% current_user.posts.each do |post| %>
   <div class='post-container'> 
     <%= simple_format(post.message) %><br>
-   <!-- <% if post.image.attached? %>
+   <% if post.image.attached? %>
     <%= image_tag post.image, style: 'width: 200px; display:block' %>
-  <% end %>-->
-  <% if post.images.attached? %>
-    <% post.images.each do |image| %>
-      <%= image_tag image, style: 'width: 200px; display:block' %>
-    <% end %>
-  <% end %><br>
+   <% end %><br>
 
     at <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
     <%= link_to 'edit post', edit_post_path(post), method: :put %>
