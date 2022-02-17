@@ -2,7 +2,9 @@
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
-        <img src="https://instuigram-avatar.jpg">
+      <% if current_user.profile_image.attached? %>
+        <%= image_tag current_user.profile_image %>
+      <% end %>
       </div>
     </div>
     
@@ -30,6 +32,10 @@
 <% current_user.posts.each do |post| %>
   <div class='post-container'> 
     <%= simple_format(post.message) %><br>
+   <% if post.image.attached? %>
+    <%= image_tag post.image, style: 'width: 200px; display:block' %>
+   <% end %><br>
+
     at <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
     <%= link_to 'edit post', edit_post_path(post), method: :put %>
     <%= button_to 'delete post forever!', post_path(post), confirm: "Are you sure?", method: :delete %>
