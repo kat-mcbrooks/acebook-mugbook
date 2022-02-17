@@ -1,11 +1,10 @@
 <div class="user-edit-page">
   <div class="actions">
     <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-      <a class="nav-link active" data-toggle="pill" href="#v-pills-home" role="tab" aria-selected="true">Edit Profile</a>
-      <a class="nav-link" data-toggle="pill" href="/users/password/edit/<%=current_user.id%>">Change Password</a>
-      <a class="nav-link" data-toggle="pill">Change Email</a>
-      <a class="nav-link" data-toggle="pill">View Profile</a>
-  
+    <a class="nav-link active" data-toggle="pill" href="#v-pills-home" role="tab" aria-selected="true">Edit Profile</a>
+      <a class="nav-link" href="<%= edit_user_registration_path(current_user) %>">Change Password</a>
+      
+      <a class="nav-link" href="<%=user_path(current_user)%>">View Profile</a>
     </div>
   </div>
   <div class="details tab-content">

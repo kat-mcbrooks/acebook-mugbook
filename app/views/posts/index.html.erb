@@ -4,6 +4,14 @@
   <div class='post-container'>
     <%= post.user.username %> said...
     <%= simple_format(post.message) %><br>
+    <! -- <% if post.image.attached? %>
+      <%= image_tag post.image, style: 'width: 200px; display:block' %>
+    <% end %> -->
+    <% if post.images.attached? %>
+      <% post.images.each do |image| %>
+        <%= image_tag image, style: 'width: 200px; display:block' %>
+      <% end %>
+    <% end %><br>
     at <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
     <% if current_user.id == post.user_id && post.editable? %>
       <%= link_to 'edit post', edit_post_path(post), method: :put %>
