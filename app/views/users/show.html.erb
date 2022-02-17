@@ -2,7 +2,8 @@
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
-        <img src="https://instuigram-avatar.jpg">
+        <% image_tag url_for(current_user.image), size: "150x150" %>
+        
       </div>
     </div>
     
