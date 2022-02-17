@@ -1,52 +1,50 @@
-<div class="user-profile">
-  <div class="profile row">
-    <div class="col-md-4 avatar">
-      <div class="wrapper">
-        
+      <br>
       <% if current_user.profile_image.attached? %>
         <%= image_tag current_user.profile_image %>
       <% end %>
 
-      </div>
-    </div>
-    
-    <div class="col-md-8 basic-info">
-      <div class="user-wrapper">
-        <h2 class="username"><%= current_user.username %></h2>
+      
+        <h2 class="username" style="text-align:center;">
+        <%= current_user.username %></h2>
         <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
           <button>Edit Profile</button>
         </a>
+      
+      
+      <div class="posts" style="text-align:center;">
+        <%= current_user.posts.count %> <%= (current_user.posts.count) == 1 ? ' post' : ' posts' %>
+        <br>
+        <%= current_user.likes.count %> <%= (current_user.likes.count) == 1 ? ' mug!' : ' mugs!' %>
       </div>
-      <ul class="posts">
-        <li><span><%= current_user.posts.count %></span> posts</li>
-        <li><span><%= current_user.likes.count %></span> <%= (current_user.likes.count) == 1 ? 'mug!' : 'mugs!' %></li>
-      </ul>
-    </div>
-  </div>
-</div>
 
-<div class="user-tabs">
-<a class="tab active" href="">
-  <i class="fa fa-th"></i>
+<div class="user-tabs" >
+<a class="tab active" >
+  <h5><i class="fa fa-th"></i>
   Your posts!
-</a>
+</h5></a>
+
 </div>
 <% current_user.posts.each do |post| %>
-  <div class='post-container'> 
+  <div class='post-container' > 
     <%= simple_format(post.message) %><br>
    <% if post.image.attached? %>
     <%= image_tag post.image, style: 'width: 200px; display:block' %>
-   <% end %><br>
+   <% end %>
 
     at <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
+    <br>
     <%= link_to 'edit post', edit_post_path(post), method: :put %>
+    <br>
     <%= button_to 'delete post forever!', post_path(post), confirm: "Are you sure?", method: :delete %>
+    <br>
     <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+    <br>
     <% if pre_like %>
       <%= button_to 'Unmug your own post?!', post_like_path(post, pre_like), method: :delete %>
     <% else %>
       <%= button_to 'Mug your own post?!', post_likes_path(post), method: :post %>
     <% end %>
+    <br>
     <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'mug!' : 'mugs!' %>
   </div>
 <% end %>

@@ -1,10 +1,11 @@
 <%= form_for @post do |form| %>
+  <br>
   <%= form.label :message %>
   <br>
   <%= form.text_area :message %>
   
   <br>
-  <div class="" style=text-align:center>
+  <div style=text-align:center>
   <%= form.file_field :image %>
   <br>
   <%= form.hidden_field :user_id, :value => current_user.id %>
