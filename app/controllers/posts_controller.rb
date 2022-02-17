@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, only: [:edit, :update]
+  # before_action :authorize, only: [:edit, :update]
 
   def index
+    @post = Post.new
     @posts = Post.all.order('created_at DESC')
+    # @posts = Post.all.with_attached_images.order('created_at DESC')
+    # @posts.map {|post| post.images.attach(params[:images])}
   end
 
   def new
@@ -15,6 +18,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create!(post_params)
+    # @post.images.attach(params[:post][:images])
+   #if you change to one image upload only, the above line isn't needed
 
     respond_to do |format|
       if @post.save
@@ -43,7 +48,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    p 'inside the destroy method'
+    @post = Post.find(params[:id])
+    p '@post found'
     @post.destroy
+    p 'post destroyed'
     redirect_to posts_path
   end
 
@@ -66,6 +75,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:message, :user_id)
+    # params.require(:post).permit(:message, :user_id, images: [])
+    params.require(:post).permit(:message, :user_id, :image)
   end
 end

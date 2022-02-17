@@ -5,11 +5,22 @@
   New post
 <% end %>
 </h3>
+<%= render "form", post: @post %>
 
 <% @posts.each do |post| %>
   <div class='post-container'>
-    <%= post.user.username %> says...
-    <%= post.message %>
+    <%= post.user.username %> said...
+    <%= simple_format(post.message) %><br>
+    <% if post.image.attached? %>
+      <%= image_tag post.image, style: 'width: 200px; display:block' %>
+    <% end %> <br>
+    at <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
+    <% if current_user.id == post.user_id && post.editable? %>
+      <%= link_to 'edit post', edit_post_path(post), method: :put %>
+    <% end %>
+    <% if current_user.id == post.user_id %>
+      <%= button_to 'delete post forever!', post_path(post), confirm: "Are you sure?", method: :delete %>
+    <% end %>
     <% if user_signed_in? %>
       <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
       <% if pre_like %>

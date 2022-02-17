@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     resources :likes
   end
 
-  #root "posts#index"
-  root 'posts#index'
+  root 'home#index'
+  
   resources :users, only: [:show, :edit, :update]
  
   # put '/posts/:id/likes', to: 'posts#like', as: 'like'

@@ -1,24 +1,20 @@
 <div class="user-edit-page">
   <div class="actions">
     <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-      <a class="nav-link active" data-toggle="pill" href="#v-pills-home" role="tab" aria-selected="true">Edit Profile</a>
-      <a class="nav-link" data-toggle="pill">Change Password</a>
-      <a class="nav-link" data-toggle="pill">Authorized Applications</a>
-      <a class="nav-link" data-toggle="pill">Email and SMS</a>
-      <a class="nav-link" data-toggle="pill">Manage Contacts</a>
-      <a class="nav-link" data-toggle="pill">Privacy and Security</a>
+    <a class="nav-link active" data-toggle="pill" href="#v-pills-home" role="tab" aria-selected="true">Edit Profile</a>
+      <a class="nav-link" href="<%= edit_user_registration_path(current_user) %>">Change Password</a>
+      
+      <a class="nav-link" href="<%=user_path(current_user)%>">View Profile</a>
     </div>
   </div>
   <div class="details tab-content">
     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
       <%= form_with model: current_user, local: true, html: {class: "form-horizontal form-edit-user"} do |f| %>
   <div class="form-group row">
-    <div class="col-sm-3 col-form-label">
-      <img class="avatar" src="https://instuigram-avatar.jpg">
-    </div>
-    <div class="col-sm-9">
-      <p class="username"><%=current_user.username %></p>
-      <a class="change-photo" href="">Change Profile Photo</a>
+  <div class="col-sm-3 col-form-label">
+  </div>
+    <div class="col-sm-9" col-form-label>
+      <p class="username">Update your profile information</p>
     </div>
   </div>
     <div class="form-group row">
@@ -27,6 +23,15 @@
        <%= f.text_field :name, class: 'form-control' %>
      </div>
    </div>
+   <div class="form-group row">
+    <%= f.label :change_profile_picture, class: 'col-sm-3 col-form-label' %>
+   <div class="col-sm-9">
+     <%= f.file_field :profile_image, class: 'form-control' %>
+     <% if @user.profile_image.attached? %>
+      <%= image_tag @user.profile_image, style: 'width: 80px; display: block' %>
+    <% end %>
+   </div>
+ </div>
   <div class="form-group row">
     <%= f.label :username, class: 'col-sm-3 col-form-label' %>
     <div class="col-sm-9">
