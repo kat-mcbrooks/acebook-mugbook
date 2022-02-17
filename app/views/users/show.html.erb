@@ -2,9 +2,11 @@
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
+        
       <% if current_user.profile_image.attached? %>
         <%= image_tag current_user.profile_image %>
       <% end %>
+
       </div>
     </div>
     
