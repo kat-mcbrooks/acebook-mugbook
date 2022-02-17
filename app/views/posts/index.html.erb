@@ -1,20 +1,24 @@
 <br>
 <br>
-<h3>
-<%= link_to new_post_path do %>
-  New post
-<% end %>
-</h3>
 <%= render "form", post: @post %>
 
 <% @posts.each do |post| %>
   <div class='post-container'>
-    <%= post.user.username %> said...
-    <%= simple_format(post.message) %><br>
+    <div class='post-header'>
+      <% if post.user.profile_image.attached? %>
+        <div class='avatar'>
+          <%= image_tag post.user.profile_image, style: 'width: 80px; display: block, text-align:center' %>
+        </div>
+      <% end %> 
+      <%= post.user.username %>
+    </div>
+    <div class='message'>
+      <%= simple_format(post.message) %><br>
+    </div>
     <% if post.image.attached? %>
-      <%= image_tag post.image, style: 'width: 200px; display:block' %>
+      <%= image_tag post.image, style: 'width: 200px; display:block, text-align:center' %>
     <% end %> <br>
-    at <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
+    <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
     <% if current_user.id == post.user_id && post.editable? %>
       <%= link_to 'edit post', edit_post_path(post), method: :put %>
     <% end %>
