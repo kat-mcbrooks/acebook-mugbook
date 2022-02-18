@@ -6,19 +6,17 @@
   <div class='post-container'>
     <div class='post-header'>
       <% if post.user.profile_image.attached? %>
-        <div class='avatar'>
-          <%= image_tag post.user.profile_image, style: 'width: 80px; display: block, text-align:center' %>
-        </div>
+        <%= image_tag post.user.profile_image, class: 'avatar' %>
       <% end %> 
       <%= post.user.username %>
     </div>
+    <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
     <div class='message'>
       <%= simple_format(post.message) %><br>
     </div>
     <% if post.image.attached? %>
       <%= image_tag post.image, style: 'width: 200px; display:block, text-align:center' %>
     <% end %> <br>
-    <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
     <% if current_user.id == post.user_id && post.editable? %>
       <%= link_to 'edit post', edit_post_path(post), method: :put %>
     <% end %>

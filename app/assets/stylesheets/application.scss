@@ -108,4 +108,13 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 100%;
+  width: 80px; 
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+.text-box {
+  border-radius: 7%;
 }
