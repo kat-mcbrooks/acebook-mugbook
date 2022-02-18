@@ -8,7 +8,7 @@
       <% if post.user.profile_image.attached? %>
         <%= image_tag post.user.profile_image, class: 'avatar' %>
       <% end %> 
-      <%= post.user.username %>
+      <%= post.user.username %><br>
     </div>
     <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
     <div class='message'>
@@ -26,7 +26,7 @@
     <% if user_signed_in? %>
       <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
       <% if pre_like %>
-        <%= button_to 'Unmug!', post_like_path(post, pre_like), method: :delete %>
+        <%= button_to '/tiny-mug.png', post_like_path(post, pre_like), method: :delete %>
       <% else %>
         <%= button_to 'Mug!', post_likes_path(post), method: :post %>
       <% end %>
