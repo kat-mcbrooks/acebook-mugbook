@@ -17,19 +17,20 @@
         <%= current_user.likes.count %> <%= (current_user.likes.count) == 1 ? ' mug!' : ' mugs!' %>
       </div>
 
-<div class="user-tabs" >
-<a class="tab active" >
+<div class="user-tabs">
+<a class="tab active">
   <h5><i class="fa fa-th"></i>
   Your posts!
 </h5></a>
-
 </div>
+
 <% current_user.posts.each do |post| %>
   <div class='post-container' > 
     <%= simple_format(post.message) %><br>
    <% if post.image.attached? %>
-    <%= image_tag post.image, style: 'width: 200px; display:block' %>
+    <%= image_tag post.image, style: 'width: 200px; display:block, text-align:center' %>
    <% end %>
+   <br>
 
     at <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
     <br>
