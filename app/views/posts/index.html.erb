@@ -17,7 +17,7 @@
       <%= image_tag post.image, style: 'width: 200px; display:block, text-align:center' %>
     <% end %> <br>
     <% if current_user.id == post.user_id && post.editable? %>
-      <%= link_to 'edit post', edit_post_path(post), method: :put %>
+      <%= link_to 'edit post', edit_post_path(post), class: "button", method: :put %>
     <% end %>
     <% if current_user.id == post.user_id %>
     <br>

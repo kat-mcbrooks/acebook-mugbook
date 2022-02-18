@@ -58,9 +58,19 @@ header {
 .unmug_button{
   background: url('/images/unmug.png');
 }
-.like-count {
 
+.button {
+  font: 14px;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
 }
+
 .navbar{
   border-bottom: 1px solid rgba(0,0,0,.0975);
   

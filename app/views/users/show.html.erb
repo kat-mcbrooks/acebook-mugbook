@@ -33,7 +33,7 @@
 
     at <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
     <br>
-    <%= link_to 'edit post', edit_post_path(post), method: :put %>
+    <%= link_to 'edit post', edit_post_path(post), class: "button", method: :put %>
     <br>
     <%= button_to 'delete post forever!', post_path(post), confirm: "Are you sure?", method: :delete %>
     <br>
