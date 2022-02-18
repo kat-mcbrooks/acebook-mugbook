@@ -1,22 +1,21 @@
 <br>
-<!---
-<h3>
-<%= link_to new_post_path do %>
-  New post
-<% end %>
-</h3>
---->
 <%= render "form", post: @post %>
-
-
 <% @posts.each do |post| %>
-  <div class='post-container' >
-    <%= post.user.username %> said...
-    <%= simple_format(post.message) %><br>
+  <div class='post-container'>
+    <div class='post-header'>
+      <% if post.user.profile_image.attached? %>
+        <%= image_tag post.user.profile_image, class: 'avatar' %>
+      <% end %> 
+      <%= post.user.username %><br>
+    </div>
+    <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
+    <div class='message'>
+      <%= simple_format(post.message) %><br>
+    </div>
+
     <% if post.image.attached? %>
-      <%= image_tag post.image, style: 'width: 200px; display:block' %>
+      <%= image_tag post.image, style: 'width: 200px; display:block, text-align:center' %>
     <% end %> <br>
-    at <%= post.created_at.strftime("%H:%M on %d %b '%y") %>
     <% if current_user.id == post.user_id && post.editable? %>
       <%= link_to 'edit post', edit_post_path(post), method: :put %>
     <% end %>
@@ -28,7 +27,7 @@
     <br>
       <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
       <% if pre_like %>
-        <%= button_to 'Unmug!', post_like_path(post, pre_like), method: :delete %>
+        <%= button_to '/tiny-mug.png', post_like_path(post, pre_like), method: :delete %>
       <% else %>
         <%= button_to 'Mug!', post_likes_path(post), method: :post %>
       <% end %>

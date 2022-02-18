@@ -2,15 +2,19 @@
 @import "font-awesome";
 @import 'users';
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
 height: 100%;
   background: linear-gradient(90deg, #4766ee 0%, #43ee54 100%);
   margin: 0;
   padding: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  overflow: hidden;
-  align-items: center;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 
 form {
@@ -44,12 +48,7 @@ header {
   border: px solid rgb(224, 223, 223);
   padding: 20px;
 }
-.message-container {
-  text-align: center;
-  max-width: 50%;
-  background-color: rgb(232, 247, 245);
-  padding: 20px;
-}
+
 .mug-button {
   background: url('/images/tiny-mug.png');
   background-size: cover;
@@ -67,7 +66,10 @@ header {
   
 }
 
-
+.post-header {
+  text-align: center;
+  display: inline;
+}
 
 .user-section{
   a{
@@ -98,4 +100,22 @@ header {
   p{
     color: #999;
   }
+}
+.message {
+  font-size: 30px;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 100%;
+  width: 80px; 
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+.text-box {
+  border-radius: 7%;
 }
