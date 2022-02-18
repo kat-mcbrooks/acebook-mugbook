@@ -16,13 +16,14 @@
         <br>
         <%= current_user.likes.count %> <%= (current_user.likes.count) == 1 ? ' mug!' : ' mugs!' %>
       </div>
-
-<div class="user-tabs">
-<a class="tab active">
-  <h5><i class="fa fa-th"></i>
-  Your posts!
-</h5></a>
-</div>
+      
+      <div class="user-tabs">
+        <a class="tab active">
+      </div>
+      
+      <div style="text-align:center;">
+        <h5>Your posts!</h5></a>
+      </div>
 
 <% current_user.posts.each do |post| %>
   <div class='post-container' > 
