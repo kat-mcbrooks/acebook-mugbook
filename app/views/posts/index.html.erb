@@ -13,9 +13,13 @@
       <%= simple_format(post.message) %><br>
     </div>
 
-    <% if post.image.attached? %>
-      <%= image_tag post.image, style: 'width: 200px; display:block, text-align:center' %>
+    <% if post.images.attached? %>
+    Images:
+      <% post.images.each do |image|  %>
+        <%= image_tag image.variant(resize_to_limit: [200, 200]) %>
+      <% end %>
     <% end %> <br>
+
     <% if current_user.id == post.user_id && post.editable? %>
       <%= link_to 'edit post', edit_post_path(post), class: "button", method: :put %>
     <% end %>
