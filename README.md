@@ -1,7 +1,7 @@
 # MugBook
-**Ruby on Rails | Sinatra | PostgreSQL | Capybara | Rspec | Heroku | GitHub Actions** 
+**Ruby on Rails | PostgreSQL w/ ActiveRecord | Capybara | RSpec | Heroku | GitHub Actions** 
 
-In a team of 5, I built this Facebook-style web app. User authentication using Devise and image uploads are some of the features I worked on. This was the first time I had worked with Rails and we had less than 2 weeks to deliver the product - whislt challenging, it was great fun learning as a team and meeting client requirements. This was our first opportunity during Makers to practice CI/CD and we chose to do this on GitHub Actions, with app deployment using Heroku. I took a lead on making sure we followed agile working practices. We used Jira for managing, prioritising and assigning tickets and running sprints. We also had a daily figma board and ran retros for reflections and thoughts. 
+In a team of 5, I built this Facebook-style web app. User authentication using **Devise** and image uploads are some of the features I worked on. This was the first time I had worked with Rails and we had less than 2 weeks to deliver the product - whislt challenging, it was great fun learning as a team and meeting client requirements. This was our first opportunity during Makers to practice CI/CD and we chose to do this on GitHub Actions, with app deployment using Heroku. I took a lead on making sure we followed agile working practices. We used Jira for managing, prioritising and assigning tickets and running sprints. We also had a daily figma board and ran retros for reflections and thoughts. 
 
 ## Features
 * Users can sign up, sign in and sign out
